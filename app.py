@@ -79,18 +79,20 @@ if vanity_name:
             data=csv,
             file_name='steam_hltb_dashboard.csv',
             mime='text/csv',
+            
         )
 
-top_games = df.head(10)
+    top_games = df.head(10)
 
-chart = alt.Chart(top_games).mark_bar().encode(
-    x=alt.X('Playtime (hrs):Q', title='Playtime (hours)'),
-    y=alt.Y('Game:N', sort='-x', title='Game'),
-    tooltip=['Game', 'Playtime (hrs)', 'How Long it takes to beat (hrs)']
-).properties(
-    title='Top 10 Most Played Games',
-    width=700,
-    height=400
-)
+    chart = alt.Chart(top_games).mark_bar().encode(
+        x=alt.X('Playtime (hrs):Q', title='Playtime (hours)'),
+        y=alt.Y('Game:N', sort='-x', title='Game'),
+        tooltip=['Game', 'Playtime (hrs)', 'How Long it takes to beat (hrs)']
+    ).properties(
+        title='Top 10 Most Played Games',
+        width=700,
+        height=400
+    )
 
-st.altair_chart(chart)
+    st.altair_chart(chart)
+
